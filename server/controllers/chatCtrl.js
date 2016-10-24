@@ -2,12 +2,15 @@ var chats = [];
 module.exports = {
 
   getChats:function(req,res){
-    // TODO write getChats
+    res.status(200).json(chats);
   },
   postChats:function(req,res){
-    // TODO write postChats
+    req.body.screenname = req.session.screenname;
+    chats.push(req.body);
+    res.status(200).json(chats);
   },
   deleteChats:function(req,res){
-    // TODO write deleteChats
+    chats = [];
+    res.status(200).json(chats);
   }
-}
+};
